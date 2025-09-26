@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 10:47:42 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/25 13:52:05 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:39:02 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void player_movements(t_game *game, int keysym, t_player *player)
     float old_px = player->px;
     float old_py = player->py;
     
-    if (keysym == XK_w || keysym == XK_W || keysym == 119 || keysym == 87)
+    if (keysym == XK_w || keysym == XK_W )
         player->py -= tile_size;
-    else if (keysym == XK_s || keysym == XK_S || keysym == 115 || keysym == 83)
+    else if (keysym == XK_s || keysym == XK_S)
         player->py += tile_size;
-    else if (keysym == XK_d || keysym == XK_D || keysym == 100 || keysym == 68)
+    else if (keysym == XK_d || keysym == XK_D)
         player->px += tile_size;
-    else if (keysym == XK_a || keysym == XK_A || keysym == 97 || keysym == 65)
+    else if (keysym == XK_a || keysym == XK_A)
         player->px -= tile_size;
 }
 

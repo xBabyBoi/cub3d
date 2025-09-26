@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:07:10 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/25 13:42:16 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:21:24 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #define HEIGHT 1920
 #define WIDTH  1080
+
 
 #ifndef tile_size
 # define tile_size 32
@@ -77,5 +78,7 @@ int get_totals_colums(char **arena, int rows);
 int is_valid_map_line(char *line);
 void player(t_game *game, char **arena);
 void player_movements(t_game *game, int keysym, t_player *player);
+void calculate_next_position(t_game *game, t_player *player, int keysym);
+int can_move_to(t_game *game, float px, float py);
 
 #endif

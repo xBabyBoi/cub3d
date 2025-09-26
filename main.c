@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 08:58:21 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/25 13:53:18 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:27:33 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void init_game(t_game *game)
     game->frame.addr = mlx_get_data_addr(game->frame.img, &game->frame.bpp, &game->frame.line_len, &game->frame.endian);
     game->arena = NULL;
     game->arena_size = 0;
+    game->player.speed = 15;
 }
 
 int main()
@@ -77,6 +78,6 @@ int main()
         free(arena[i]);
         i++;
     }
-    free(arena);
+    // free(arena);
     return (0);
 }
