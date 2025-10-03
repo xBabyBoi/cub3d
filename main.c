@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 08:58:21 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/26 16:27:33 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:06:10 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,23 @@ int main()
     close(fd);
     game.arena = arena;
     game.arena_size = arena_size;
+    if (!get_direction(&game))
+    {
+        printf("No valid player starting position found in the map\n");
+        return (1);
+    }
     if (arena_size > 0)
     {
         int total_rows = arena_size;
         int total_columns = ft_strlen(arena[0]);
         if (arena[0][total_columns - 1] == '\n')
             total_columns--;
-        game.player.px = (total_columns / 2) * tile_size;
-        game.player.py = (total_rows / 2) * tile_size;
     }
     draw_map(game.arena, game.arena_size, &game);
-    
     mlx_key_hook(game.win, key_handler, &game);
     mlx_hook(game.win, 17, 1L<<17, close_handler, &game); // DestroyNotify event
     mlx_loop(game.mlx);
+    
     int i = 0;
     while (i < arena_size)
     {

@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:07:10 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/26 16:21:24 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:24:43 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_player
     float px;
     float py;
     int position;
+    int dirX;
+    int dirY;
     int speed;
 } t_player;
 
@@ -80,5 +82,6 @@ void player(t_game *game, char **arena);
 void player_movements(t_game *game, int keysym, t_player *player);
 void calculate_next_position(t_game *game, t_player *player, int keysym);
 int can_move_to(t_game *game, float px, float py);
+int get_direction(t_game *game);
 
 #endif
