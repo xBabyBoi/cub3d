@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:07:10 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/02 16:24:43 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:47:11 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # include <math.h>
 # include "get_next_line.h"
 
-#define HEIGHT 1920
-#define WIDTH  1080
+#define HEIGHT 600
+#define WIDTH  600
+#define FOV 60
 
 
 #ifndef tile_size
@@ -40,6 +41,14 @@ typedef struct s_player
     int dirY;
     int speed;
 } t_player;
+
+typedef struct s_camera
+{
+    float planeX;
+    float planeY;
+    double raydirX[WIDTH];
+    double raydirY[WIDTH];
+} t_camera;
 
 
 typedef struct s_map
@@ -69,6 +78,7 @@ typedef struct s_game
     t_player player;
     char **arena;      // Add arena storage
     int arena_size;    // Add arena size storage
+    t_camera camera;
 }   t_game; 
 
 
@@ -83,5 +93,8 @@ void player_movements(t_game *game, int keysym, t_player *player);
 void calculate_next_position(t_game *game, t_player *player, int keysym);
 int can_move_to(t_game *game, float px, float py);
 int get_direction(t_game *game);
+void ray_direction(t_game *game);
+void draw_ray(t_game *game);
+void clear_window(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:01:46 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/02 16:26:58 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:47:05 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ void calculate_next_position(t_game *game, t_player *player, int keysym)
         player->px = next_px;
         player->py = next_py;
     }
+}
+
+void clear_window(t_game *game)
+{
+    mlx_clear_window(game->mlx, game->win);
 }

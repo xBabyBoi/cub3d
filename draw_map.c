@@ -6,25 +6,25 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 10:47:42 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/26 13:39:02 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:47:53 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void draw_ray(t_game *game, int start_x, int start_y, int len, int color)
-{
-    int end_y;
-    int y;
+// void draw_ray(t_game *game, int start_x, int start_y, int len, int color)
+// {
+//     int end_y;
+//     int y;
     
-    end_y = start_y - len;
-    y = start_y;
-    while (y >= end_y)
-    {
-        mlx_pixel_put(game->mlx, game->win, start_x, y , color);
-        y--;
-    }
-}
+//     end_y = start_y - len;
+//     y = start_y;
+//     while (y >= end_y)
+//     {
+//         mlx_pixel_put(game->mlx, game->win, start_x, y , color);
+//         y--;
+//     }
+// }
 
 void player_movements(t_game *game, int keysym, t_player *player)
 {
@@ -43,7 +43,7 @@ void player_movements(t_game *game, int keysym, t_player *player)
 
 void draw_map(char **arena, int arena_size, t_game *game)
 {
-    
+    mlx_clear_window(game->mlx, game->win);
     t_map map;
     map.row = 0;
     int i;
@@ -98,6 +98,8 @@ void draw_map(char **arena, int arena_size, t_game *game)
         }
         i++;
     }
+    ray_direction(game);
+    draw_ray(game);
 }
 // void player(t_game *game, char **arena)
 // {
