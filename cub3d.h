@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:07:10 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/03 15:47:11 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:15:12 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,23 @@ typedef struct s_game
 }   t_game; 
 
 
+typedef struct s_ray
+{
+    double rayDirX;
+    double rayDirY;
+    int mapX;
+    int mapY;
+    double sideDistX;
+    double sideDistY;
+    double deltaDistX;
+    double deltaDistY;
+    double perpWallDist;
+    int stepX;
+    int stepY;
+    int hit;
+    int side;
+} t_ray;
+
 int key_handler(int keysym, t_game *game);
 int close_handler(t_game *game);
 void draw_map(char **mape, int map_size, t_game *game);
@@ -89,12 +106,14 @@ int get_totals_rows(char **arena);
 int get_totals_colums(char **arena, int rows);
 int is_valid_map_line(char *line);
 void player(t_game *game, char **arena);
-void player_movements(t_game *game, int keysym, t_player *player);
+void player_movements(t_game *game, int keysym);
 void calculate_next_position(t_game *game, t_player *player, int keysym);
 int can_move_to(t_game *game, float px, float py);
 int get_direction(t_game *game);
 void ray_direction(t_game *game);
 void draw_ray(t_game *game);
 void clear_window(t_game *game);
+void init_rays(t_game *game, t_ray *ray, int x);
+void check_hit_wall(t_game * game, t_ray *ray);
 
 #endif

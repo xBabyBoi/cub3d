@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:01:46 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/03 15:47:05 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:28:14 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void calculate_next_position(t_game *game, t_player *player, int keysym)
 {
     float next_px;
     float next_py;
+    int xd;
 
     next_px = player->px;
     next_py = player->py;
-    int xd = get_direction(game);
+    xd = get_direction(game);
     if (keysym == XK_w || keysym == XK_W)
         next_py -= player->speed;
     else if (keysym == XK_s || keysym == XK_S)

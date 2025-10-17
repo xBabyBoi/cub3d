@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 10:47:42 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/03 15:47:53 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:25:48 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,21 @@
 //     }
 // }
 
-void player_movements(t_game *game, int keysym, t_player *player)
+void player_movements(t_game *game, int keysym)
 {
-    float old_px = player->px;
-    float old_py = player->py;
+    float old_px;
+    float old_py;
     
+    old_px = game->player.px;
+    old_py = game->player.py;
     if (keysym == XK_w || keysym == XK_W )
-        player->py -= tile_size;
+        game->player.py -= tile_size;
     else if (keysym == XK_s || keysym == XK_S)
-        player->py += tile_size;
+        game->player.py += tile_size;
     else if (keysym == XK_d || keysym == XK_D)
-        player->px += tile_size;
+        game->player.px += tile_size;
     else if (keysym == XK_a || keysym == XK_A)
-        player->px -= tile_size;
+        game->player.px -= tile_size;
 }
 
 void draw_map(char **arena, int arena_size, t_game *game)

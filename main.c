@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 08:58:21 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/02 17:06:10 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:24:06 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main()
     }
     if (arena_size > 0)
     {
-        int total_rows = arena_size;
+        // int total_rows = arena_size;
         int total_columns = ft_strlen(arena[0]);
         if (arena[0][total_columns - 1] == '\n')
             total_columns--;

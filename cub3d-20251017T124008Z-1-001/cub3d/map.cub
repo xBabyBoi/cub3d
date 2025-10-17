@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+NO textures/test/north.xpm
+
+
+
+
+
+
+
+
+SO textures/test/south.xpm
+                        WE textures/test/west.xpm
+        EA textures/test/east.xpm            
+
+        F 20,           20,             20
+C 200,          200,200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      11111     
+     1000001
+    11111000111
+   10000000001
+   10000S00001
+    100110001
+     1000001
+      11111     
+
+
+

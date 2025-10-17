@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 12:08:04 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/09/25 13:18:10 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:27:08 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int get_totals_rows(char **arena)
 int get_totals_colums(char **arena, int rows)
 {
     int colums;
-    size_t len;
+    int len;
     int i;
 
     i = 0;
