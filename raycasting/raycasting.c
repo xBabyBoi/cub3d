@@ -6,7 +6,7 @@
 /*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:05:49 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/13 11:16:06 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:01:52 by yel-qori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,51 +80,51 @@ void ray_direction(t_game *game)
     }
 }
 
-void raycasting(t_game *game)
-{
-    int x;
-    t_ray ray;
-
-    x = 0;
-    while (x < WIDTH)
-    {
-        init_rays(game, &ray, x);
-        check_hit_wall(game , &ray);
-        
-    }
-}
-
-// void draw_ray(t_game *game)
+// void raycasting(t_game *game)
 // {
-//     int i;
-//     int ray_len;
-//     int end_x;
-//     int end_y;
-//     float step_x;
-//     float step_y;
-//     int steps;
-    
-//     i = 0;
-//     ray_len = 400;  // Increase ray length
-//     while (i < WIDTH)
-//     {
-//         end_x = game->player.px + game->camera.raydirX[i] * ray_len;    
-//         end_y = game->player.py + game->camera.raydirY[i] * ray_len;
+//     int x;
+//     t_ray ray;
 
-//         // Draw the line, not just the endpoint
-//         steps = ray_len;
-//         step_x = game->camera.raydirX[i];
-//         step_y = game->camera.raydirY[i];
+//     x = 0;
+//     while (x < WIDTH)
+//     {
+//         init_rays(game, &ray, x);
+//         check_hit_wall(game , &ray);
         
-//         int j = 0;
-//         while (j < steps)
-//         {
-//             int ray_x = game->player.px + step_x * j;
-//             int ray_y = game->player.py + step_y * j;
-//             if (ray_x >= 0 && ray_x < WIDTH && ray_y >= 0 && ray_y < HEIGHT)
-//                 mlx_pixel_put(game->mlx, game->win, ray_x, ray_y, 0x00FF00);
-//             j++;
-//         }
-//         i += 10;  // Draw every 10th ray to make it visible
 //     }
 // }
+
+void draw_ray(t_game *game)
+{
+    int i;
+    int ray_len;
+    int end_x;
+    int end_y;
+    float step_x;
+    float step_y;
+    int steps;
+    
+    i = 0;
+    ray_len = 400;  // Increase ray length
+    while (i < WIDTH)
+    {
+        end_x = game->player.px + game->camera.raydirX[i] * ray_len;    
+        end_y = game->player.py + game->camera.raydirY[i] * ray_len;
+
+        // Draw the line, not just the endpoint
+        steps = ray_len;
+        step_x = game->camera.raydirX[i];
+        step_y = game->camera.raydirY[i];
+        
+        int j = 0;
+        while (j < steps)
+        {
+            int ray_x = game->player.px + step_x * j;
+            int ray_y = game->player.py + step_y * j;
+            if (ray_x >= 0 && ray_x < WIDTH && ray_y >= 0 && ray_y < HEIGHT)
+                mlx_pixel_put(game->mlx, game->win, ray_x, ray_y, 0x00FF00);
+            j++;
+        }
+        i += 10;  // Draw every 10th ray to make it visible
+    }
+}
