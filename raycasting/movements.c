@@ -30,11 +30,11 @@ void calculate_next_position(t_game *game, t_player *player, int keysym)
 {
     float next_px;
     float next_py;
-    int xd;
+    // int xd;
 
     next_px = player->px;
     next_py = player->py;
-    xd = get_direction(game);
+    // xd = get_direction(game);
     if (keysym == XK_w || keysym == XK_W)
         next_py -= player->speed;
     else if (keysym == XK_s || keysym == XK_S)

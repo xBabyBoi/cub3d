@@ -17,7 +17,7 @@ int close_handler(t_game *game)
     printf("Closing game...\n");
     mlx_destroy_image(game->mlx, game->frame.img);
     mlx_destroy_window(game->mlx, game->win);
-    mlx_destroy_display(game->mlx);
+        // mlx_destroy_display is Linux-only
     // free(game->mlx);
     exit(0);
 }

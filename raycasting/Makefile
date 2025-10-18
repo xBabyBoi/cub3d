@@ -13,8 +13,8 @@
 
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -Lminilibx-linux -lmlx -lX11 -lXext -lm
+CFLAGS = -Wall -Wextra -Werror -I../minilibx_mms_20191025_beta
+LDFLAGS = -L../minilibx_mms_20191025_beta -lmlx -lX11 -lXext -lm
 SRC = main.c\
 	draw_map.c\
 	get_next_line_utils.c\
@@ -23,6 +23,12 @@ SRC = main.c\
 	keys_handler.c\
 	movements.c\
 	raycasting.c\
+	map_parsing.c\
+	map_validation.c\
+	map_info.c\
+	utils.c\
+	ft_strtrim.c\
+	ft_itoa.c
 	
 OBJS = ${SRC:.c=.o}
 

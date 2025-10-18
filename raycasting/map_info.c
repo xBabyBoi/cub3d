@@ -24,7 +24,7 @@ char *rgb_to_hex(char *r, char *g, char *b)
     value_g = ft_atoi(g);
     value_b = ft_atoi(b);
     if ((value_r < 0 || value_r > 255) || (value_g < 0 || value_g > 255) || (value_b < 0 || value_b > 255))
-        return NULL;
+        exit(printf("invalid color"));
     color = malloc(9);
     if (!color)
         return NULL;
@@ -45,6 +45,7 @@ char *parse_color(char *str)
     char **color;
     char *str1;
     int i;
+    int x;
     int j;
     int comp;
     
@@ -54,12 +55,17 @@ char *parse_color(char *str)
     color[2] = malloc(4);
     i = 0;
     j = 0;
+    x = 1;
     comp = 0;
     while(str[i] && comp < 3)
     {
+        if((str[i] < 48 || str[i] > 57) && str[i] != ',' && str[i] != ' ' && str[i] != '\t')
+            exit(printf("error\n"));
         if(str[i] == ',')
         {
             color[comp][j] = '\0';
+            if(str[i + 1] >= 48 && str[i + 1] <= 57)
+                x++;
             comp++;
             j = 0;
         }
@@ -70,6 +76,8 @@ char *parse_color(char *str)
         }
         i++;
     }
+    if(x != 3)
+        exit(printf("error"));
     color[comp][j] = '\0';
     str1 = rgb_to_hex(color[0], color[1], color[2]);
     return(str1);

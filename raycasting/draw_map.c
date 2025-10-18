@@ -28,11 +28,11 @@
 
 void player_movements(t_game *game, int keysym)
 {
-    float old_px;
-    float old_py;
+    // float old_px;
+    // float old_py;
     
-    old_px = game->player.px;
-    old_py = game->player.py;
+    // old_px = game->player.px;
+    // old_py = game->player.py;
     if (keysym == XK_w || keysym == XK_W )
         game->player.py -= tile_size;
     else if (keysym == XK_s || keysym == XK_S)

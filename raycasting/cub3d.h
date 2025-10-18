@@ -17,11 +17,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>        // Add this for open()
-# include "minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
+#include <string.h>
+# include "mlx.h"
 # include <math.h>
 # include "get_next_line.h"
+
+// Define X11 keysyms if not available
+#ifndef XK_Escape
+# define XK_Escape 0xff1b
+# define XK_w 0x0077
+# define XK_W 0x0057
+# define XK_a 0x0061
+# define XK_A 0x0041
+# define XK_s 0x0073
+# define XK_S 0x0053
+# define XK_d 0x0064
+# define XK_D 0x0044
+#endif
 
 #define HEIGHT 600
 #define WIDTH  600
@@ -99,6 +111,27 @@ typedef struct s_ray
     int side;
 } t_ray;
 
+// Parsing structures
+typedef struct s_playerinfo
+{
+    int x;
+    int y;
+    char f;
+} s_playerinfo;
+
+typedef struct s_cub_info
+{
+    char **map;
+    char *north;
+    char *south;
+    char *east;
+    char *west;
+    char *floor_color;
+    char *ceiling_color;
+    s_playerinfo *player;
+} s_cub_info;
+
+// Raycasting functions
 int key_handler(int keysym, t_game *game);
 int close_handler(t_game *game);
 void draw_map(char **mape, int map_size, t_game *game);
@@ -115,5 +148,20 @@ void draw_ray(t_game *game);
 void clear_window(t_game *game);
 void init_rays(t_game *game, t_ray *ray, int x);
 void check_hit_wall(t_game * game, t_ray *ray);
+
+// Parsing functions
+int validate_map_closure(s_cub_info *info);
+int parse_textures(s_cub_info *info);
+int count_lines(int fd);
+int	ft_atoi(char *str);
+int map_info(s_cub_info *info);
+int map_parsing(s_cub_info *info);
+int	ft_strcmp(char *s1, char *s2);
+char	*ft_itoa(int n);
+int format_check(char *str,char *format);
+char	*ft_strcpy(char *dest, char *src);
+int	ft_strncmp(char *s1, char *s2, unsigned int n);
+char	*ft_strtrim(char *s1, char *set);
+// ft_strdup and ft_strlen are already declared in get_next_line.h
 
 #endif
