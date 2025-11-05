@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-qori <yel-qori@student.42.fr>          +#+  +:+       +#+        */
+/*   By: outourmi <outourmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 16:07:10 by yel-qori          #+#    #+#             */
-/*   Updated: 2025/10/13 11:15:12 by yel-qori         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:43:58 by outourmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>        // Add this for open()
+#include <fcntl.h>
 #include <string.h>
-# include "mlx.h"
+# include "/home/youssef/Desktop/cub3d/minilibx-linux/mlx.h"
 # include <math.h>
-# include "get_next_line.h"
+# include "get_next_line/get_next_line.h"
 
-// Define X11 keysyms if not available
 #ifndef XK_Escape
 # define XK_Escape 0xff1b
 # define XK_w 0x0077
@@ -33,10 +32,13 @@
 # define XK_S 0x0053
 # define XK_d 0x0064
 # define XK_D 0x0044
+ # define XK_Left  0xff51
+ # define XK_Right 0xff53
 #endif
 
 #define HEIGHT 600
-#define WIDTH  600
+#define WIDTH  800
+// Field of view in degrees (wider FOV -> larger camera plane)
 #define FOV 60
 
 
@@ -49,8 +51,8 @@ typedef struct s_player
     float px;
     float py;
     int position;
-    int dirX;
-    int dirY;
+    double dirX;
+    double dirY;
     int speed;
 } t_player;
 
@@ -146,8 +148,12 @@ int get_direction(t_game *game);
 void ray_direction(t_game *game);
 void draw_ray(t_game *game);
 void clear_window(t_game *game);
+void rotate_camera(t_game *game, double angle);
 void init_rays(t_game *game, t_ray *ray, int x);
 void check_hit_wall(t_game * game, t_ray *ray);
+void calculate_wall_distance(t_game *game, t_ray *ray);
+void draw_wall_stripe(t_game *game, int x, t_ray *ray);
+void raycast_3d(t_game *game);
 
 // Parsing functions
 int validate_map_closure(s_cub_info *info);

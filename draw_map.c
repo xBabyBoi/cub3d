@@ -45,63 +45,66 @@ void player_movements(t_game *game, int keysym)
 
 void draw_map(char **arena, int arena_size, t_game *game)
 {
+    (void)arena;
+    (void)arena_size;
     mlx_clear_window(game->mlx, game->win);
-    t_map map;
-    map.row = 0;
-    int i;
-    int j;
-    while (map.row < arena_size)
-    {
-        map.col = 0;
-        while (arena[map.row][map.col] != '\0')
-        {
-            map.x = map.col * tile_size;
-            map.y = map.row * tile_size;
-            if (arena[map.row][map.col] == '1')
-            {
-                i = 0;
-                while (i < tile_size)
-                {
-                    j = 0;
-                    while (j < tile_size)
-                    {
-                        mlx_pixel_put(game->mlx, game->win, map.x + i, map.y + j, 0xFFFFFF);
-                        j++;
-                    }
-                    i++;
-                }
-            }
-            else if (arena[map.row][map.col] == '0')
-            {
-                i = 0;
-                while (i < tile_size)
-                {
-                    j = 0;
-                    while(j < tile_size)
-                    {
-                        mlx_pixel_put(game->mlx, game->win, map.x + i, map.y + j, 0x000000);
-                        j++;
-                    }
-                    i++;
-                }
-            }
-            map.col++;
-        }
-        map.row++;
-    }
-    i = 0;
-    while (i < tile_size)
-    {
-        j = 0;
-        while (j < tile_size)
-        {
-            mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, 0xFF0000); // Red color for the player
-            j++;
-        }
-        i++;
-    }
-    ray_direction(game);
-    draw_ray(game);
+    // t_map map;
+    // map.row = 0;
+    // int i;
+    // int j;
+    // while (map.row < arena_size)
+    // {
+    //     map.col = 0;
+    //     while (arena[map.row][map.col] != '\0')
+    //     {
+    //         map.x = map.col * tile_size;
+    //         map.y = map.row * tile_size;
+    //         if (arena[map.row][map.col] == '1')
+    //         {
+    //             i = 0;
+    //             while (i < tile_size)
+    //             {
+    //                 j = 0;
+    //                 while (j < tile_size)
+    //                 {
+    //                     mlx_pixel_put(game->mlx, game->win, map.x + i, map.y + j, 0xFFFFFF);
+    //                     j++;
+    //                 }
+    //                 i++;
+    //             }
+    //         }
+    //         else if (arena[map.row][map.col] == '0')
+    //         {
+    //             i = 0;
+    //             while (i < tile_size)
+    //             {
+    //                 j = 0;
+    //                 while(j < tile_size)
+    //                 {
+    //                     mlx_pixel_put(game->mlx, game->win, map.x + i, map.y + j, 0x000000);
+    //                     j++;
+    //                 }
+    //                 i++;
+    //             }
+    //         }
+    //         map.col++;
+    //     }
+    //     map.row++;
+    // }
+    // i = 0;
+    // while (i < tile_size)
+    // {
+    //     j = 0;
+    //     while (j < tile_size)
+    //     {
+    //         mlx_pixel_put(game->mlx, game->win, game->player.px + i, game->player.py + j, 0xFF0000); // Red color for the player
+    //         j++;
+    //     }
+    //     i++;
+    // }
+    // Switch to 3D rendering instead of 2D+debug rays
+    raycast_3d(game);
+
 }
 // void player(t_game *game, char **arena)
 // {

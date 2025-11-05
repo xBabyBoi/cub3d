@@ -37,5 +37,11 @@ int key_handler(int keysym, t_game *game)
         // player_movements(game, keysym, &game->player);       
         draw_map(game->arena, game->arena_size, game);
     }
+    else if (keysym == XK_Left || keysym == XK_Right)
+    {
+        double rot = (keysym == XK_Left) ? -0.06 : 0.06; // ~3.4 degrees per press
+        rotate_camera(game, rot);
+        draw_map(game->arena, game->arena_size, game);
+    }
     return (0);
 }

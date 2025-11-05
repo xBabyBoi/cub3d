@@ -1,0 +1,3 @@
+t player :[position x, position y, direction x, direction y]
+t_camera :[plane x, plane y]
+t_ray    :[ray direction X, ray direction Y,]
